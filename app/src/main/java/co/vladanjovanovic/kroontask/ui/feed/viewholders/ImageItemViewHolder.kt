@@ -37,6 +37,13 @@ class ImageItemViewHolder(override val containerView: View) : RecyclerView.ViewH
             .transition(DrawableTransitionOptions.withCrossFade())
             .placeholder(R.drawable.background_placeholder)
             .into(image_avatar)
+
+        KroonGlide
+            .with(itemView.context)
+            .load("")
+            .transition(DrawableTransitionOptions.withCrossFade())
+            .placeholder(R.drawable.placeholder_large)
+            .into(image_background)
     }
 
     override fun onClick(v: View?) {
