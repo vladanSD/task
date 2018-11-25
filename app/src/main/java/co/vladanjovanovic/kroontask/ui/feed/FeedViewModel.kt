@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import co.vladanjovanovic.kroontask.data.Repository
 import co.vladanjovanovic.kroontask.data.model.Feed
+import co.vladanjovanovic.kroontask.data.model.NetworkError
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
@@ -13,6 +14,8 @@ class FeedViewModel @Inject constructor(val repository: Repository) : ViewModel(
 
     var feeds: MutableLiveData<List<Feed>> = MutableLiveData()
     private lateinit var feedsDisposable: DisposableObserver<List<Feed>>
+
+    var networkError: MutableLiveData<NetworkError> = repository.networkError
 
     fun getFeeds() {
         feedsDisposable = object : DisposableObserver<List<Feed>>() {
