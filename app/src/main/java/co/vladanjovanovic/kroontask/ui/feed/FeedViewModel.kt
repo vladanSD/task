@@ -34,10 +34,6 @@ class FeedViewModel @Inject constructor(val repository: Repository) : ViewModel(
             .subscribe(feedsDisposable)
     }
 
-    fun fetchFeeds() {
-        repository.fetchFeeds()
-    }
-
     override fun onCleared() {
         super.onCleared()
         if (!feedsDisposable.isDisposed) feedsDisposable.dispose()

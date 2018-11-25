@@ -20,7 +20,7 @@ class ApplicationModule {
 
     @Provides
     @Singleton
-    fun provideRepository(feedService: FeedService, database: KroonDatabase) : Repository = Repository(feedService, database)
+    fun provideRepository(feedService: FeedService, database: KroonDatabase, application: KroonApp) : Repository = Repository(feedService, database, application)
 
     @Provides
     @Singleton

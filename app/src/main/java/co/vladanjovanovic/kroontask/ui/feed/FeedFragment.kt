@@ -30,7 +30,6 @@ class FeedFragment : DaggerFragment() {
 
         initViews()
 
-        viewModel.fetchFeeds()
         viewModel.getFeeds()
 
         viewModel.feeds.observe(this, Observer {
@@ -38,7 +37,7 @@ class FeedFragment : DaggerFragment() {
         })
     }
 
-    fun initViews() {
+    private fun initViews() {
         list.layoutManager = LinearLayoutManager(requireContext())
         list.adapter = FeedAdapter(this)
         list.hasFixedSize()
