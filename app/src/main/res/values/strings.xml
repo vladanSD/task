@@ -2,4 +2,7 @@
     <string name="app_name">KroonTask</string>
     <string name="open">Open</string>
     <string name="share">Share</string>
+    <string name="minutes"> min ago</string>
+    <string name="hours"> hours ago</string>
+    <string name="days"> days ago</string>
 </resources>

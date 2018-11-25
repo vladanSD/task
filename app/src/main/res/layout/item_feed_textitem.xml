@@ -67,7 +67,7 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="20dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:srcCompat="@drawable/ic_like_24dp"
+                app:srcCompat="@drawable/ic_like_32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintRight_toRightOf="parent"/>
 
