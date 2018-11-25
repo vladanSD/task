@@ -44,6 +44,7 @@ class FeedFragment : DaggerFragment(), SwipeRefreshLayout.OnRefreshListener {
 
         swipe.setOnRefreshListener(this)
 
+        viewModel.getFeeds()
     }
 
     private fun initViews() {
