@@ -18,15 +18,15 @@ class FeedViewModel@Inject constructor(val repository: Repository) : ViewModel()
 
     var feeds: MutableLiveData<List<Feed>> = MutableLiveData()
 
-    private lateinit var feedsDisposable: DisposableObserver<List<FeedResponse>>
+    private lateinit var feedsDisposable: DisposableObserver<FeedResponse>
 
     fun fetchFeeds() {
-        feedsDisposable = object : DisposableObserver<List<FeedResponse>>() {
+        feedsDisposable = object : DisposableObserver<FeedResponse>() {
             override fun onComplete() {
             }
 
-            override fun onNext(feeds: List<FeedResponse>) {
-                this@FeedViewModel.feeds.value = feeds[0].getFeeds()
+            override fun onNext(response: FeedResponse) {
+                this@FeedViewModel.feeds.value = response.getFeeds()
             }
 
             override fun onError(e: Throwable) {

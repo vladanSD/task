@@ -1,7 +1,10 @@
 package co.vladanjovanovic.kroontask.di.network
 
 import co.vladanjovanovic.kroontask.data.network.FeedService
+import co.vladanjovanovic.kroontask.utils.DateDeserializer
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+import com.google.gson.internal.bind.DateTypeAdapter
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -9,7 +12,9 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 import javax.inject.Singleton
+
 
 @Module
 class NetworkModule() {
@@ -24,7 +29,12 @@ class NetworkModule() {
 
     @Provides
     @Singleton
-    fun provideGson(): Gson = Gson()
+    fun provideDateAdapter(): DateDeserializer = DateDeserializer()
+
+    @Provides
+    @Singleton
+    fun provideGson(dateDeserializer: DateDeserializer): Gson =
+        GsonBuilder().registerTypeAdapter(Date::class.java, dateDeserializer).create()
 
     @Provides
     @Singleton

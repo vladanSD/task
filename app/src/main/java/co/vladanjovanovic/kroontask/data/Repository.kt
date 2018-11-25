@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 class Repository @Inject constructor(val feedService: FeedService, val database: KroonDatabase) {
 
-    fun getFeeds(): Observable<List<FeedResponse>> {
+    fun getFeeds(): Observable<FeedResponse> {
         return feedService.getFeeds()
     }
 
