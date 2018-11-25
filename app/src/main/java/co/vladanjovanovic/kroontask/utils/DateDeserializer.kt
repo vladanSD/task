@@ -12,6 +12,6 @@ class DateDeserializer : JsonDeserializer<Date> {
 
     @Throws(JsonParseException::class)
     override fun deserialize(element: JsonElement, arg1: Type, arg2: JsonDeserializationContext): Date? {
-        return Date(element.asJsonPrimitive.asLong)
+        return Date(element.asJsonPrimitive.asLong * 1000)
     }
 }

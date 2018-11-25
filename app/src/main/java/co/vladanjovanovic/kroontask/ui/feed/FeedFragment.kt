@@ -31,7 +31,12 @@ class FeedFragment : DaggerFragment() {
 
         viewModel.feeds.observe(this, Observer {
             for(feed in it){
-                Log.i("LOG", feed.type.string)
+                Log.i("type", feed.type.string)
+                Log.i("creationTime", feed.creationTime.toString())
+                Log.i("authorName", feed.authorName)
+                Log.i("authorAvatarUrl", feed.authorAvatarUrl)
+                Log.i("message", feed.message)
+                Log.i("uid", feed.uid)
             }
         })
     }
