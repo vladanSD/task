@@ -27,6 +27,7 @@ class FeedFragment : DaggerFragment() {
         viewModel = ViewModelProviders.of(this, viewModelFactory).get(FeedViewModel::class.java)
 
         viewModel.fetchFeeds()
+        viewModel.getFeeds()
 
         viewModel.feeds.observe(this, Observer {
             for(feed in it){

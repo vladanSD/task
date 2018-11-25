@@ -11,7 +11,7 @@ import io.reactivex.Observable
 interface FeedDao {
 
     @Query("SELECT * FROM feeds")
-    fun getFeeds(): Observable<Feed>
+    fun getFeeds(): Observable<List<Feed>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertFeeds(feeds: List<Feed>)
