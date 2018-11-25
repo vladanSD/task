@@ -30,7 +30,7 @@ class FeedFragment : DaggerFragment() {
 
         viewModel.feeds.observe(this, Observer {
             for(feed in it){
-                Log.i("LOG", feed.uid)
+                Log.i("LOG", feed.type.string)
             }
         })
     }

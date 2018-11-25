@@ -1,10 +1,11 @@
 package co.vladanjovanovic.kroontask.di.network
 
+import co.vladanjovanovic.kroontask.data.model.FeedType
 import co.vladanjovanovic.kroontask.data.network.FeedService
 import co.vladanjovanovic.kroontask.utils.DateDeserializer
+import co.vladanjovanovic.kroontask.utils.FeedTypeDeserializer
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.google.gson.internal.bind.DateTypeAdapter
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -17,15 +18,16 @@ import javax.inject.Singleton
 
 
 @Module
-class NetworkModule() {
+class NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder()
-        .addInterceptor(
-            HttpLoggingInterceptor()
-                .setLevel(HttpLoggingInterceptor.Level.BODY)
-        ).build()
+    fun provideOkHttpClient(): OkHttpClient =
+        OkHttpClient.Builder()
+            .addInterceptor(
+                HttpLoggingInterceptor()
+                    .setLevel(HttpLoggingInterceptor.Level.BODY)
+            ).build()
 
     @Provides
     @Singleton
@@ -33,19 +35,25 @@ class NetworkModule() {
 
     @Provides
     @Singleton
-    fun provideGson(dateDeserializer: DateDeserializer): Gson =
-        GsonBuilder().registerTypeAdapter(Date::class.java, dateDeserializer).create()
+    fun provideFeedTypeDeserializer(): FeedTypeDeserializer = FeedTypeDeserializer()
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit {
-        return Retrofit.Builder()
+    fun provideGson(dateDeserializer: DateDeserializer, feedTypeDeserializer: FeedTypeDeserializer): Gson =
+        GsonBuilder()
+            .registerTypeAdapter(Date::class.java, dateDeserializer)
+            .registerTypeAdapter(FeedType::class.java, feedTypeDeserializer)
+            .create()
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient, gson: Gson): Retrofit =
+        Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
-    }
 
     @Provides
     @Singleton
