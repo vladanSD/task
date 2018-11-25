@@ -6,11 +6,13 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
 @Module
-interface BuildersModule {
+abstract class AndroidInjectors {
 
     @ContributesAndroidInjector
-    fun homeActivity() : HomeActivity
+    abstract fun homeActivity(): HomeActivity
 
     @ContributesAndroidInjector
-    fun feedFragment() : FeedFragment
+    abstract fun feedFragment(): FeedFragment
+
+
 }

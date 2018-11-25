@@ -6,7 +6,7 @@ import androidx.room.TypeConverters
 import co.vladanjovanovic.kroontask.data.model.Feed
 
 
-@Database(entities = [Feed::class], version = 1)
+@Database(entities = [Feed::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class KroonDatabase : RoomDatabase() {
 

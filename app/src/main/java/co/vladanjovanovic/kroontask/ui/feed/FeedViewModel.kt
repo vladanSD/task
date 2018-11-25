@@ -10,7 +10,7 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class FeedViewModel@Inject constructor(val application: KroonApp, val repository: Repository) : ViewModel(){
+class FeedViewModel@Inject constructor(val repository: Repository) : ViewModel(){
 
     private var feeds: ArrayList<Feed> = ArrayList()
 
