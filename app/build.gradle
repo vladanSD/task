@@ -84,8 +84,9 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:$rootProject.okHttpVersion"
     implementation "com.squareup.okhttp3:logging-interceptor:$rootProject.okHttpVersion"
 
-    implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
-    kapt "android.arch.persistence.room:compiler:$rootProject.roomVersion"
+
+    kapt "androidx.room:room-compiler:2.0.0"
+    implementation "androidx.room:room-runtime:2.0.0"
     implementation "androidx.room:room-rxjava2:$rootProject.roomVersion"
 
     implementation "net.cachapa.expandablelayout:expandablelayout:$rootProject.expandableVersion"
